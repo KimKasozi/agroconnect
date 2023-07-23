@@ -102,7 +102,7 @@ const handleSubmit = async(e) => {
     // Display user's prompt in the console
     console.log("User input: ", userPrompt);
     //sending users text to sunbird for translation 
-const translation = await axios.post('http://localhost:8080', {
+const translation = await axios.post('https://sunbird-ai-server.onrender.com/', {
   text: userPrompt,
   src_lang: SL,
   tgt_lang: 'English'
@@ -131,7 +131,7 @@ const translation = await axios.post('http://localhost:8080', {
     const messageDiv = document.getElementById(uniqueId);
     loader(messageDiv);
     // Obtaining a response from the bot ---> fetching data from the server
-    const response = await fetch("http://localhost:5000", {
+    const response = await fetch("https://openai-server-xrwm.onrender.com/", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -148,7 +148,7 @@ const translation = await axios.post('http://localhost:8080', {
         const data = await response.json();
         const parseData = data.bot.trim();
         //sending bots reply to text summarizer 
-         const summarized = await axios.post('http://localhost:8060', {
+         const summarized = await axios.post('https://summarizer-ysxs.onrender.com/', {
            text: parseData
          })  
    .then(response => {
@@ -170,7 +170,7 @@ const translation = await axios.post('http://localhost:8080', {
    });
 //end of the sending to summarizer
         //sending bots reply from sunbird for interpretation
-        const botsReply = await axios.post('http://localhost:8080', {
+        const botsReply = await axios.post('https://sunbird-ai-server.onrender.com/', {
   text: summarized,
   src_lang:'English',
   tgt_lang: SL

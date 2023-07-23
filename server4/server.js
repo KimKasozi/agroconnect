@@ -31,4 +31,4 @@ app.get('/', async (req, res) => {
   });
 });
 
-app.listen(3001, () => console.log('Server is running on port http://localhost:3001'));
+app.listen(3001, () => console.log('Server is running on port https://chatengine-hmmq.onrender.com/'));

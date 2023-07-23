@@ -49,4 +49,4 @@ app.post('/', async(req, res) =>{
       });
 
 console.log("funny");
-app.listen(8080, () => console.log('Server is running on port http://localhost:8080'));
+app.listen(8080, () => console.log('Server is running on port https://sunbird-ai-server.onrender.com/'));

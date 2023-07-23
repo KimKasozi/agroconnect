@@ -54,4 +54,4 @@ app.get('/', async (req, res) => {
   });
 });
 console.log("amazing");
-app.listen(8060, () => console.log('Server is running on port http://localhost:8060'));
+app.listen(8060, () => console.log('Server is running on port https://summarizer-ysxs.onrender.com/'));
