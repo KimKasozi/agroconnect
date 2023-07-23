@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.get('/', async (req, res) => {
   res.status(200).send({
-    message: "Let's have that for today!!"
+    message: "This is the SUNBIRD AI server!!"
   });
 });
 
