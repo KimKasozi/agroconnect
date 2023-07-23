@@ -50,7 +50,7 @@ try {
 
 app.get('/', async (req, res) => {
   res.status(200).send({
-    message: "server3 test."
+    message: "This is the Summarizer server."
   });
 });
 console.log("amazing");
