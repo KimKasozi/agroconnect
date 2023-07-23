@@ -21,7 +21,7 @@ const AuthPage = (props) => {
             <div className="auth-label">Username</div>
             <input className="auth-input" name="username" />
             <button className="auth-button" type="submit">
-              Enter
+              Enter ChatRoom
             </button>
           </div>
         </form>

@@ -131,7 +131,7 @@ const translation = await axios.post('http://localhost:8080', {
     const messageDiv = document.getElementById(uniqueId);
     loader(messageDiv);
     // Obtaining a response from the bot ---> fetching data from the server
-    const response = await fetch("https://chatbot2-2dna.onrender.com/", {
+    const response = await fetch("http://localhost:5000", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -148,7 +148,7 @@ const translation = await axios.post('http://localhost:8080', {
         const data = await response.json();
         const parseData = data.bot.trim();
         //sending bots reply to text summarizer 
-         const summarized = await axios.post('https://chatbotservers3.onrender.com', {
+         const summarized = await axios.post('http://localhost:8060', {
            text: parseData
          })  
    .then(response => {
@@ -170,7 +170,7 @@ const translation = await axios.post('http://localhost:8080', {
    });
 //end of the sending to summarizer
         //sending bots reply from sunbird for interpretation
-        const botsReply = await axios.post('https://chatbotserver2.onrender.com/', {
+        const botsReply = await axios.post('http://localhost:8080', {
   text: summarized,
   src_lang:'English',
   tgt_lang: SL
