@@ -25,4 +25,10 @@ app.post('/', async(req, res) =>{
   }
 })
 
+app.get('/', async (req, res) => {
+  res.status(200).send({
+    message: "This is the chatengine.io server."
+  });
+});
+
 app.listen(3001, () => console.log('Server is running on port http://localhost:3001'));
