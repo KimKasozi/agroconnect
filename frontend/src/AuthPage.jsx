@@ -3,10 +3,10 @@ const AuthPage = (props) => {
     const onSubmit = (e) => {
       e.preventDefault();
       const { value } = e.target[0];
-      axios.post('http://localhost:3001',
+      axios.post('https://chatengine-hmmq.onrender.com/',
       {username:value}
       )
-      .then (r => props.onAuth({ ...r.data, value, secret: value }))
+      .then (r => props.onAuth({ ...r.data, secret: value }))
       .catch(e => console.log("error" , e))
     };
   

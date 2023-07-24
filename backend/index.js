@@ -1,9 +1,6 @@
 import express from 'express';
-import * as dotenv from 'dotenv';
 import cors from 'cors';
 import axios from 'axios';
-
-dotenv.config();
 
 const app = express();
 app.use(cors({origin: true}));
@@ -16,7 +13,7 @@ app.post('/', async(req, res) =>{
       "https://api.chatengine.io/users/",
       {username: username, secret: username, first_name: username},
       {headers:{
-        "private-key": "2851b533-6450-461f-bbcc-0ccbd5937829"
+        "private-key": "5e395d86-327f-408a-84a4-f4c8cf354f1e"
       }}
       )
       return res.status(r.status).json(r.data)

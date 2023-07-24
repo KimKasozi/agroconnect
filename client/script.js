@@ -101,6 +101,13 @@ const handleSubmit = async(e) => {
     // console.log(languageObtained);
     // Display user's prompt in the console
     console.log("User input: ", userPrompt);
+    // bot's chat Stripe
+    const uniqueId = generateUniqueId();
+    chatContainer.innerHTML += chatStripe(true, " ", uniqueId);
+    // the ability for the page to auto scroll as the message is being displayed
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+    const messageDiv = document.getElementById(uniqueId);
+    loader(messageDiv);
     //sending users text to sunbird for translation 
 const translation = await axios.post('https://sunbird-ai-server.onrender.com/', {
   text: userPrompt,
@@ -123,13 +130,7 @@ const translation = await axios.post('https://sunbird-ai-server.onrender.com/', 
   });
 //end of the sending
     
-    // bot's chat Stripe
-    const uniqueId = generateUniqueId();
-    chatContainer.innerHTML += chatStripe(true, " ", uniqueId);
-    // the ability for the page to auto scroll as the message is being displayed
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-    const messageDiv = document.getElementById(uniqueId);
-    loader(messageDiv);
+    
     // Obtaining a response from the bot ---> fetching data from the server
     const response = await fetch("https://openai-server-xrwm.onrender.com/", {
         method: 'POST',
@@ -151,27 +152,27 @@ const translation = await axios.post('https://sunbird-ai-server.onrender.com/', 
          const summarized = await axios.post('https://summarizer-ysxs.onrender.com/', {
            text: parseData
          })  
-   .then(response => {
-     if (response.status === 200) {
-       const data = response.data;
-       const message = data.summary;
-       const summarizedText =JSON.stringify(message)
-       //mess2 = summarizedText;
-       // Use the translated text as needed in your script
-       console.log(message)
-       return message;
-      
-     } else {
-       throw new Error(`Error: ${response.status} ${response.statusText}`);
-     }
-   })
-   .catch(error => {
-     console.error('Error:', error);
-   });
+        .then(response => {
+          if (response.status === 200) {
+            const data = response.data;
+            const message = data.summary;
+            const summarizedText =JSON.stringify(message)
+            //mess2 = summarizedText;
+            // Use the translated text as needed in your script
+            console.log(message)
+            return message;
+            
+          } else {
+            throw new Error(`Error: ${response.status} ${response.statusText}`);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
 //end of the sending to summarizer
         //sending bots reply from sunbird for interpretation
         const botsReply = await axios.post('https://sunbird-ai-server.onrender.com/', {
-  text: summarized,
+  text: parseData,
   src_lang:'English',
   tgt_lang: SL
 })
