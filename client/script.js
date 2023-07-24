@@ -130,7 +130,7 @@ const translation = await axios.post('https://sunbird-ai-server.onrender.com/', 
   });
 //end of the sending
     
-    
+    // https://openai-server-xrwm.onrender.com
     // Obtaining a response from the bot ---> fetching data from the server
     const response = await fetch("https://openai-server-xrwm.onrender.com/", {
         method: 'POST',
@@ -159,7 +159,6 @@ const translation = await axios.post('https://sunbird-ai-server.onrender.com/', 
             const summarizedText =JSON.stringify(message)
             //mess2 = summarizedText;
             // Use the translated text as needed in your script
-            console.log(message)
             return message;
             
           } else {
@@ -172,7 +171,7 @@ const translation = await axios.post('https://sunbird-ai-server.onrender.com/', 
 //end of the sending to summarizer
         //sending bots reply from sunbird for interpretation
         const botsReply = await axios.post('https://sunbird-ai-server.onrender.com/', {
-  text: parseData,
+  text: summarized,
   src_lang:'English',
   tgt_lang: SL
 })
